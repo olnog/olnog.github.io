@@ -1,0 +1,3 @@
+[submodule "prototypes/ieb"]
+	path = prototypes/ieb
+	url = https://github.com/olnog/ieb
