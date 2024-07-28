@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>A Website On The Internet - The Monastery of the White Tiger</title>
+    <link rel="stylesheet" href="/css.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+	</head>
+    <script>
+        let time = 0;
+        let noon = new Date ('07/28/24 12:58:28');
+        let now = new Date();
+        var diff = now - noon;
+        diff /= 1000 ;
+        time = Math.round (diff * 1.157);
+        if (time >= 100000){
+            time -= Math.round(time / 100000) * 100000;
+        }
+        setInterval (poop, 864);
+        function poop(){
+        time++;
+        if (time >= 100000){
+            time = 0;    
+            document.getElementById("reset").innerHTML = new Date().toLocaleString();
+        }
+        document.getElementById("time").innerHTML = time.toLocaleString();
+
+        }
+    </script>
+    <script src='https://code.jquery.com/jquery-3.6.1.js'></script>
+    <script src='/js.js'></script>
+
+</body></html>
