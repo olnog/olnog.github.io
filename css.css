@@ -6,3 +6,11 @@ div, h1 {
     font-size: 30px;
     text-align:center;
   }
+
+  .achieved {
+    color: green;
+  }
+
+  .stop {
+    color:red;
+  }
