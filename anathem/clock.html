@@ -25,7 +25,7 @@
         
     </div>
     <script>
-
+        let time = 0;            
         function poop(){
             console.log(time, typeof time);
 
@@ -43,7 +43,7 @@
 
         function solarNoon(){ 
             console.log(document.getElementById("solarNoon").value);
-            let time = 0;            
+        
             let noon = new Date (document.getElementById("solarNoon").value);
             let now = new Date();
             var diff = now - noon;
