@@ -27,23 +27,15 @@
     <script>
         let time = 0;            
         function poop(){
-            console.log(time, typeof time);
-
             time++;
-            console.log(time, typeof time);
-
             if (time >= 100000){
                 time = 0;    
                 document.getElementById("reset").innerHTML = new Date().toLocaleString();
             }
-            console.log(time, typeof time);
-
             document.getElementById("time").innerHTML = time.toLocaleString();
         }
 
-        function solarNoon(){ 
-            console.log(document.getElementById("solarNoon").value);
-        
+        function solarNoon(){         
             let noon = new Date (document.getElementById("solarNoon").value);
             let now = new Date();
             var diff = now - noon;
@@ -52,7 +44,6 @@
             if (time >= 100000){
                 time -= Math.round(time / 100000) * 100000;
             }
-            console.log(time, typeof time);
             setInterval (poop, 864);
 
         }
