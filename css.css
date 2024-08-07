@@ -15,6 +15,10 @@ div, h1 {
     text-align:center;
   }
 
+  .note {
+    color: grey;
+    margin-left: 50px;
+  }
   .stop {
     color:red;
   }
