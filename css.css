@@ -11,6 +11,10 @@ div, h1 {
     color: green;
   }
 
+  .center {
+    text-align:center;
+  }
+
   .stop {
     color:red;
   }

@@ -13,9 +13,11 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="manifest" href="/site.webmanifest">
 	</head>
-    <div>
+    <div class="center">
         <input id='solarNoon' type='text' value="" onkeydown="typing(this)" />
         <button onclick="solarNoon">go</button>
+    </div><div class="center">
+        <a href="https://gml.noaa.gov/grad/solcalc/">solar noon calculator</a>
     </div>
     <div id="time">
         
@@ -35,7 +37,7 @@
 
         function solarNoon(){            
             let time = 0;            
-            let noon = new Date (document.getElementById("solarNoon").value;);
+            let noon = new Date (document.getElementById("solarNoon").value);
             let now = new Date();
             var diff = now - noon;
             diff /= 1000 ;
