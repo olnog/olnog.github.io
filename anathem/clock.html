@@ -14,8 +14,8 @@
 		<link rel="manifest" href="/site.webmanifest">
 	</head>
     <div>
-        <input id='solarNoon' type='text' value="what was the time and date of the last solar noon?" onkeydown="typing(this)" />
-        <input type='button' onclick="solarNoon">go</button>
+        <input id='solarNoon' type='text' value="" onkeydown="typing(this)" />
+        <button onclick="solarNoon">go</button>
     </div>
     <div id="time">
         
@@ -23,37 +23,35 @@
         
     </div>
     <script>
-        let time = 0;
-        let noon = new Date ('07/28/24 12:58:28');
-        let now = new Date();
-        var diff = now - noon;
-        diff /= 1000 ;
-        time = Math.round (diff * 1.157);
-        if (time >= 100000){
-            time -= Math.round(time / 100000) * 100000;
+
+        function poop(){
+            time++;
+            if (time >= 100000){
+                time = 0;    
+                document.getElementById("reset").innerHTML = new Date().toLocaleString();
+            }
+            document.getElementById("time").innerHTML = time.toLocaleString();
         }
+
+        function solarNoon(){            
+            let time = 0;            
+            let noon = new Date (document.getElementById("solarNoon").value;);
+            let now = new Date();
+            var diff = now - noon;
+            diff /= 1000 ;
+            time = Math.round (diff * 1.157);
+            if (time >= 100000){
+                time -= Math.round(time / 100000) * 100000;
+            }
+            setInterval (poop, 864);
+
+        }
+
         function typing(e){
             if(event.key === 'Enter') {
                 solarNoon();     
             }
 
-        }
-
-        setInterval (poop, 864);
-
-
-        function poop(){
-        time++;
-        if (time >= 100000){
-            time = 0;    
-            document.getElementById("reset").innerHTML = new Date().toLocaleString();
-        }
-        document.getElementById("time").innerHTML = time.toLocaleString();
-
-        }
-
-        function solarNoon(){
-            console.log(document.getElementById("solarNoon").value)
         }
     </script>
     <script src='https://code.jquery.com/jquery-3.6.1.js'></script>
