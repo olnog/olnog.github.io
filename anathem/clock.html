@@ -27,11 +27,17 @@
     <script>
 
         function poop(){
+            console.log(time, typeof time);
+
             time++;
+            console.log(time, typeof time);
+
             if (time >= 100000){
                 time = 0;    
                 document.getElementById("reset").innerHTML = new Date().toLocaleString();
             }
+            console.log(time, typeof time);
+
             document.getElementById("time").innerHTML = time.toLocaleString();
         }
 
