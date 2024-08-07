@@ -13,6 +13,10 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="manifest" href="/site.webmanifest">
 	</head>
+    <div>
+        <input id='solarNoon' type='text' value="what was the time and date of the last solar noon?" onkeydown="typing(this)" />
+        <input type='button' onclick="solarNoon">go</button>
+    </div>
     <div id="time">
         
     </div><div id="reset">
@@ -28,7 +32,16 @@
         if (time >= 100000){
             time -= Math.round(time / 100000) * 100000;
         }
+        function typing(e){
+            if(event.key === 'Enter') {
+                solarNoon();     
+            }
+
+        }
+
         setInterval (poop, 864);
+
+
         function poop(){
         time++;
         if (time >= 100000){
@@ -37,6 +50,10 @@
         }
         document.getElementById("time").innerHTML = time.toLocaleString();
 
+        }
+
+        function solarNoon(){
+            console.log(document.getElementById("solarNoon").value)
         }
     </script>
     <script src='https://code.jquery.com/jquery-3.6.1.js'></script>
