@@ -18,46 +18,60 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="manifest" href="/site.webmanifest">
 	</head>
-    <div id="reset" class="center note">
-        
-    </div>
+
     <div class="center">
         <input id='solarNoon' type='text' value="" onkeydown="typing(this)" />
         <button onclick="solarNoon()">go</button>
     </div><div class="center">
         <a href="https://gml.noaa.gov/grad/solcalc/" target="_blank">solar noon calculator</a>
     </div>
-    <div id="earthTime">
-        
-    </div><div>
+    <h3 class="center">earth time</h3>
+    <div id="earthTime" class="center">
+        <span id="earthTime"></span>
+        <span class='note'>
+            (<span id="reset"></span>)
+        </span>
+    </div>
+    <h3 class="center">universal</h3>
+    <div class="center">
         Days:
         <span id="universalDays"></span>
 
         <span id="universalTime"></span>
     </div>
     <script>
+        let earthTimeStarted = false;
         let noonTime = "08/08/24 12:57:34";
         let earthTime = 0;
         let universalTime = 0;
         let universalDays = 0;
         document.getElementById("solarNoon").value = noonTime; 
         findUniversalTime();
+        setInterval (poop, 864);
+
 
         function poop(){
-            earthTime++;
             universalTime++;
             if (universalTime > 100000){
                 universalTime = 0;
                 universalDays++;
             }
+
+            
+            document.getElementById("universalTime").innerHTML = universalTime.toLocaleString();
+            document.getElementById("universalDays").innerHTML = universalDays.toLocaleString();
+
+
+            if (!earthTimeStarted){
+                return;
+            }
+            earthTime++;
+            document.getElementById("earthTime").innerHTML = earthTime.toLocaleString();
+
             if (earthTime >= 100000){
                 earthTime = 0;    
                 reset(true);
             }
-            document.getElementById("earthTime").innerHTML = earthTime.toLocaleString();
-            document.getElementById("universalTime").innerHTML = universalTime.toLocaleString();
-            document.getElementById("universalDays").innerHTML = universalDays.toLocaleString();
-
         }
         function reset(what){
             if (what == true){
@@ -75,7 +89,7 @@
             if (earthTime >= 100000){
                 earthTime -= Math.round(earthTime / 100000) * 100000;
             }
-            setInterval (poop, 864);
+            earthTimeStarted = true;
             reset(false);
         }
 
