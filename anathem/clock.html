@@ -33,16 +33,22 @@
         let noonTime = "08/08/24 12:57:34";
         let time = 0;
         document.getElementById("solarNoon").value = noonTime; 
-                    
+
         function poop(){
             time++;
             if (time >= 100000){
                 time = 0;    
-                document.getElementById("reset").innerHTML = new Date().toLocaleString();
+                reset(true);
             }
             document.getElementById("time").innerHTML = time.toLocaleString();
         }
-
+        function reset(what){
+            if (what == true){
+                document.getElementById("reset").innerHTML = new Date().toLocaleString();
+                return;
+            }
+            document.getElementById("reset").innerHTML = new Date(noonTime).toLocaleString();
+        }
         function solarNoon(){            
             let noon = new Date (document.getElementById("solarNoon").value);
             let now = new Date();
