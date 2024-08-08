@@ -18,29 +18,45 @@
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="manifest" href="/site.webmanifest">
 	</head>
+    <div id="reset" class="center note">
+        
+    </div>
     <div class="center">
         <input id='solarNoon' type='text' value="" onkeydown="typing(this)" />
         <button onclick="solarNoon()">go</button>
     </div><div class="center">
         <a href="https://gml.noaa.gov/grad/solcalc/" target="_blank">solar noon calculator</a>
     </div>
-    <div id="time">
+    <div id="earthTime">
         
-    </div><div id="reset">
-        
+    </div><div>
+        Days:
+        <span id="universalDays"></span>
+
+        <span id="universalTime"></span>
     </div>
     <script>
         let noonTime = "08/08/24 12:57:34";
-        let time = 0;
+        let earthTime = 0;
+        let universalTime = 0;
+        let universalDays = 0;
         document.getElementById("solarNoon").value = noonTime; 
         
         function poop(){
-            time++;
-            if (time >= 100000){
-                time = 0;    
+            earthTime++;
+            universalTime++;
+            if (universalTime > 100000){
+                universalTime = 0;
+                universalDays++;
+            }
+            if (earthTime >= 100000){
+                earthTime = 0;    
                 reset(true);
             }
-            document.getElementById("time").innerHTML = time.toLocaleString();
+            document.getElementById("earthTime").innerHTML = earthTime.toLocaleString();
+            document.getElementById("universalTime").innerHTML = universalTime.toLocaleString();
+            document.getElementById("universalDays").innerHTML = universalDays.toLocaleString();
+
         }
         function reset(what){
             if (what == true){
@@ -54,9 +70,9 @@
             let now = new Date();
             var diff = now - noon;
             diff /= 1000 ;
-            time = Math.round (diff * 1.157);
-            if (time >= 100000){
-                time -= Math.round(time / 100000) * 100000;
+            earthTime = Math.round (diff * 1.157);
+            if (earthTime >= 100000){
+                earthTime -= Math.round(earthTime / 100000) * 100000;
             }
             setInterval (poop, 864);
             reset(false);
@@ -66,6 +82,18 @@
             if(event.key === 'Enter') {
                 solarNoon();     
             }
+
+        }
+        function findUniversalTime(){
+            let seconds = Math.floor(Date.now() / 1000);
+            seconds -= 50000; //adjust from midnight to noon
+            seconds *= 1.157;
+            let days = seconds / 100000  + 4371922; //the number of 100k second days since 1970 and how many days in years in the heliocene calendar up to 1970
+            seconds %= 100000;
+            seconds = Math.round(seconds);
+            days = Math.round(days);
+            universalDays = days;
+            universalTime = seconds;
 
         }
     </script>
