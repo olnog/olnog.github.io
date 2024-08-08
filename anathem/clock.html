@@ -33,7 +33,7 @@
         let noonTime = "08/08/24 12:57:34";
         let time = 0;
         document.getElementById("solarNoon").value = noonTime; 
-
+        
         function poop(){
             time++;
             if (time >= 100000){
@@ -59,7 +59,7 @@
                 time -= Math.round(time / 100000) * 100000;
             }
             setInterval (poop, 864);
-
+            reset(false);
         }
 
         function typing(e){
