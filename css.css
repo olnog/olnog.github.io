@@ -16,6 +16,12 @@ div, h1 {
     font-weight: bold;
   }
 
+  .category {
+    color: grey;
+    font-style: italic;
+
+  }
+
   .center {
     text-align:center;
   }
