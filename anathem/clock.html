@@ -26,7 +26,7 @@
         <a href="https://gml.noaa.gov/grad/solcalc/" target="_blank">solar noon calculator</a>
     </div>
     <h3 class="center">earth</h3>
-    <div id="earthTime" class="center">
+    <div class="center">
         <span id="earthTime"></span>
         <span class='note'>
             (<span id="reset"></span>)
@@ -34,15 +34,19 @@
     </div>
     <h3 class="center">universal</h3>
     <div class="center">
-        Days:
+        Cycle: 
+        <span id="universalCycles"></span>
+    </div><div class="center">
+        Date:
         <span id="universalDays"></span>
     </div><div class="center">
-        <span id="universalTime"></span>
+        Time: <span id="universalTime"></span>
     </div>
     <script>
         let earthTimeStarted = false;
         let noonTime = "08/08/24 12:57:34";
         let earthTime = 0;
+        let universalCycles = 0;
         let universalTime = 0;
         let universalDays = 0;
         document.getElementById("solarNoon").value = noonTime; 
@@ -51,16 +55,19 @@
 
 
         function poop(){
-            console.log(universalTime);
             universalTime++;
-            if (universalTime > 100000){
+            if (universalTime >= 100000){
                 universalTime = 0;
                 universalDays++;
             }
-
-            
-            document.getElementById("universalTime").innerHTML = universalTime.toLocaleString();
+            if (universalDays > 1000){
+                universalDays = 1;
+                universalCycles++;
+            }
+            document.getElementById("universalCycles").innerHTML = universalCycles.toLocaleString();
             document.getElementById("universalDays").innerHTML = universalDays.toLocaleString();
+            document.getElementById("universalTime").innerHTML = universalTime.toLocaleString();
+            
 
 
             if (!earthTimeStarted){
@@ -106,10 +113,12 @@
             seconds *= 1.157;
             let days = seconds / 100000  + 4371922; //the number of 100k second days since 1970 and how many days in years in the heliocene calendar up to 1970
             seconds %= 100000;
-            seconds = Math.round(seconds);
-            days = Math.round(days);
-            universalDays = days;
-            universalTime = seconds;
+            seconds = Math.floor(seconds);
+            days = Math.floor(days);
+            universalCycles = Math.floor(days / 1000);
+            universalDays = Math.floor(days % 1000);
+
+            
 
         }
     </script>
