@@ -95,7 +95,7 @@
             diff /= 1000 ;
             earthTime = Math.round (diff * 1.157);
             if (earthTime >= 100000){
-                earthTime -= Math.round(earthTime / 100000) * 100000;
+                earthTime %= 100000;
             }
             earthTimeStarted = true;
             reset(false);
