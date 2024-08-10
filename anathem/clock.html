@@ -47,7 +47,7 @@
             diff /= 1000 ;
             time = Math.round (diff * 1.157);
             if (time >= 100000){
-                time -= Math.round(time / 100000) * 100000;
+                time %= 100000;
             }
             setInterval (poop, 864);
 
