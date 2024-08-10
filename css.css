@@ -11,14 +11,31 @@ div, h1 {
     color: green;
   }
 
+  .active{
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  .category {
+    color: grey;
+    font-style: italic;
+
+  }
+
   .center {
     text-align:center;
   }
 
-  .note {
+  .completed {
+    text-decoration: line-through;
+
+  }
+
+  .note, .todo {
     color: grey;
     margin-left: 50px;
   }
   .stop {
     color:red;
   }
+
