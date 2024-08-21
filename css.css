@@ -5,7 +5,8 @@ a {
 }
 
 div, h1 {
-    margin: 20px;
+    margin-right: 20px; 
+    margin-bottom: 20px;
   }
 
 

@@ -1,3 +1,4 @@
+const TOMETRIC = 1.157;
 let earthTimeStarted = false;
 let noonTime = "08/08/24 12:57:34";
 let earthTime = 0;
@@ -8,6 +9,19 @@ document.getElementById("solarNoon").value = noonTime;
 findUniversalTime();
 setInterval (poop, 864);
 
+
+function fetchConventionalYear(qCycle){
+    //this does not factor in how many days are currently in the cycle and does not calculate out what day of the imperial year
+    if (qCycle > universalCycles){
+        return "That has not happened yet. (And I haven't bothered to calculate this."
+    } else if (qCycle == universalCycles){
+        return "This is this year. Congrats!"
+    }
+    let cycleDiff = universalCycles - qCycle;
+    let days = cycleDiff * 1000;
+   //this is rough because I'm not taking into account leap years;
+   
+}
 
 function poop(){
     universalTime++;
@@ -48,7 +62,7 @@ function solarNoon(){
     let now = new Date();
     var diff = now - noon;
     diff /= 1000 ;
-    earthTime = Math.round (diff * 1.157);
+    earthTime = Math.round (diff * TOMETRIC);
     if (earthTime >= 100000){
         earthTime %= 100000;
     }
@@ -65,7 +79,7 @@ function typing(e){
 function findUniversalTime(){
     let seconds = Math.floor(Date.now() / 1000);
     seconds -= 50000; //adjust from midnight to noon
-    seconds *= 1.157;
+    seconds *= TOMETRIC;
     let days = seconds / 100000  + 4371922; //the number of 100k second days since 1970 and how many days in years in the heliocene calendar up to 1970
     seconds %= 100000;
     seconds = Math.floor(seconds);
