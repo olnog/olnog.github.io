@@ -19,6 +19,7 @@ $( "#metricTimer" ).on( "click", function() {
 
 
 function createTimer(metricSeconds){
+    console.log("ya")
     timers.push(fetchTimer(metricSeconds, true, metricSeconds));
     displayTimers();
 }
