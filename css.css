@@ -5,8 +5,8 @@ a {
 }
 
 div, h1 {
-    margin-right: 20px; 
-    margin-bottom: 20px;
+    margin-right: 10px; 
+    margin-bottom: 10px;
   }
 
 
@@ -28,6 +28,7 @@ div, h1 {
   .category {
     color: grey;
     font-style: italic;
+    font-weight: bold;
 
   }
 
