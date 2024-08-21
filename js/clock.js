@@ -11,12 +11,12 @@ findUniversalTime();
 setInterval (poop, 864);
 $( "#minuteTimer" ).on( "click", function() {
     console.log('papa')
-    createMinuteTimer($("#newTimer").value);
+    createMinuteTimer($("#newTimer").val);
 
 });
 
 $( "#metricTimer" ).on( "click", function() {
-    createTimer($("#newTimer").value);
+    createTimer($("#newTimer").val);
 });
 
 
