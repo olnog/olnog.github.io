@@ -32,6 +32,7 @@ function createMinuteTimer(minutes){
     let metricSeconds = minutes * 60 * TOMETRIC;
     console.log(minutes, metricSeconds);
     timers.push(fetchTimer(metricSeconds, false, minutes));
+    displayTimers();
 }
 
 function displayTimers(){
