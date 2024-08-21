@@ -59,12 +59,14 @@ function fetchConventionalYear(qCycle){
    //this is rough because I'm not taking into account leap years;
    
 }
-fetchImperialTime(metricSeconds){
+
+function fetchImperialTime(metricSeconds){
     let imperialSeconds = metricSeconds / TOMETRIC;
     let minutes = Math.floor(imperialSeconds / 60);
     imperialSeconds %= imperialSeconds;
     return {minutes: minutes, seconds:imperialSeconds}
 }
+
 function fetchTimer(metricSeconds, metric, duration){
     let imperial = fetchImperialTime(metricSeconds);
     return {metricSeconds: metricSeconds, minutes: imperial.minutes, seconds: imperial.seconds, metric: metric, duration: duration}    
