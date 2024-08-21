@@ -83,7 +83,8 @@ function poop(){
     }
     for(let i in timers){
         let timer = timers[i];        
-        timers[i] = fetchTimer(Math.floor(timer.metricSeconds--), timer.metric, timer.duration);
+        timer.metricSeconds--;
+        timers[i] = fetchTimer(Math.floor(timer.metricSeconds), timer.metric, timer.duration);
     }
     displayTimers();
     document.getElementById("universalCycles").innerHTML = universalCycles.toLocaleString();
