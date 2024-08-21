@@ -10,25 +10,21 @@ document.getElementById("solarNoon").value = noonTime;
 findUniversalTime();
 setInterval (poop, 864);
 $( "#minuteTimer" ).on( "click", function() {
-    console.log($("#newTimer").val())
     createMinuteTimer(Number($("#newTimer").val()));
 });
 
 $( "#metricTimer" ).on( "click", function() {
-    console.log($("#newTimer").val())
     createTimer(Number($("#newTimer").val()));
 });
 
 
 function createTimer(kMetricSeconds){
-    console.log(metricSeconds);
     timers.push(fetchTimer(metricSeconds * 1000, true, metricSeconds));
     displayTimers();
 }
 
 function createMinuteTimer(minutes){
     let metricSeconds = minutes * 60 * TOMETRIC;
-    console.log(minutes, metricSeconds);
     timers.push(fetchTimer(metricSeconds, false, minutes));
     displayTimers();
 }
@@ -36,13 +32,15 @@ function createMinuteTimer(minutes){
 function displayTimers(){
     let text = "";
     for (let timer of timers){
-        console.log(timer);
         let duration = timer.duration + " minutes: ";
         if (timer.metric){
             duration = /*formatMSeconds(timer.duration)*/ timer.duration + " metric seconds: "
         }
-
-        text += "<div>" + duration + timer.metricSeconds + " / " + timer.minutes + 'm' + timer.seconds + 's</div>';
+        let className = '';
+        if (timer.metricSeconds < 0){
+            className = 'timedOut';
+        }
+        text += "<div class='" + className + "'>" + duration + timer.metricSeconds + " / " + timer.minutes + 'm' + timer.seconds + 's</div>';
     }
     $("#timers").html(text);
 }
@@ -63,7 +61,7 @@ function fetchConventionalYear(qCycle){
 function fetchImperialTime(metricSeconds){
     let imperialSeconds = metricSeconds / TOMETRIC;
     let minutes = Math.floor(imperialSeconds / 60);
-    imperialSeconds %= imperialSeconds;
+    imperialSeconds %= 60;
     return {minutes: minutes, seconds:imperialSeconds}
 }
 
@@ -84,9 +82,8 @@ function poop(){
         universalCycles++;
     }
     for(let i in timers){
-        let timer = timers[i];
-        Math.floor(timer.metricSeconds --);        
-        timers[i] = fetchTimer(timer.metricSeconds, timer.metric, timer.duration);
+        let timer = timers[i];        
+        timers[i] = fetchTimer(Math.floor(timer.metricSeconds--), timer.metric, timer.duration);
     }
     displayTimers();
     document.getElementById("universalCycles").innerHTML = universalCycles.toLocaleString();
