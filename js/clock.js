@@ -11,14 +11,13 @@ findUniversalTime();
 setInterval (poop, 864);
 $( "#minuteTimer" ).on( "click", function() {
     console.log($("#newTimer").val())
-    createMinuteTimer($("#newTimer").val());
-
+    createMinuteTimer(Number($("#newTimer").val()));
 });
 
 $( "#metricTimer" ).on( "click", function() {
     console.log($("#newTimer").val())
 
-    createTimer($("#newTimer").val());
+    createTimer(Number($("#newTimer").val()));
 });
 
 
@@ -36,9 +35,17 @@ function createMinuteTimer(minutes){
 }
 
 function displayTimers(){
+    let text = "";
     for (let timer of timers){
         console.log(timer);
+        let duration = timer.duration + " minutes: ";
+        if (timer.metric){
+            duration = /*formatMSeconds(timer.duration)*/ timer.duration + " metric seconds: "
+        }
+
+        text += "<div>" + duration + timer.metricSeconds + " / " + timer.minutes + 'm' + timer.seconds + 's</div>';
     }
+    $("#timers").html(text);
 }
 
 function fetchConventionalYear(qCycle){
