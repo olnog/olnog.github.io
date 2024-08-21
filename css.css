@@ -1,14 +1,15 @@
-a.menu {
+a {
   color: grey;
-  font-style:italic;
-  margin: 20px;
+  font-style:italic;  
+}
+a.menu {
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 div, h1 {
-    margin-right: 10px; 
-    margin-bottom: 10px;
+    margin-bottom: 20px;  
   }
-
 
   #time {
     font-size: 30px;
@@ -26,7 +27,6 @@ div, h1 {
   }
 
   .category {
-    color: grey;
     font-style: italic;
     font-weight: bold;
 
