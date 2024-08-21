@@ -1,6 +1,13 @@
+a {
+  color: grey;
+  font-style:italic;
+  margin: 20px;
+}
+
 div, h1 {
     margin: 20px;
   }
+
 
   #time {
     font-size: 30px;
@@ -10,6 +17,7 @@ div, h1 {
   .achieved {
     color: green;
   }
+
 
   .active{
     text-decoration: underline;
