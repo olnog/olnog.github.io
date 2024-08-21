@@ -26,7 +26,7 @@ div, h1 {
     font-weight: bold;
   }
 
-  .category {
+  .category, .quitTitle {
     font-style: italic;
     font-weight: bold;
 
@@ -47,5 +47,9 @@ div, h1 {
   }
   .stop {
     color:red;
+  }
+
+  .timedOut{
+    background-color: red;
   }
 
