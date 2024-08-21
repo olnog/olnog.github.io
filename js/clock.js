@@ -10,7 +10,9 @@ document.getElementById("solarNoon").value = noonTime;
 findUniversalTime();
 setInterval (poop, 864);
 $( "#minuteTimer" ).on( "click", function() {
+    console.log('papa')
     createMinuteTimer($("#newTimer").value);
+
 });
 
 $( "#metricTimer" ).on( "click", function() {
