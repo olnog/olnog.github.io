@@ -16,18 +16,21 @@ $( "#minuteTimer" ).on( "click", function() {
 });
 
 $( "#metricTimer" ).on( "click", function() {
+    console.log($("#newTimer").val())
+
     createTimer($("#newTimer").val());
 });
 
 
 function createTimer(metricSeconds){
-    console.log("ya")
+    console.log(metricSeconds);
     timers.push(fetchTimer(metricSeconds, true, metricSeconds));
     displayTimers();
 }
 
 function createMinuteTimer(minutes){
     let metricSeconds = minutes * 60 * TOMETRIC;
+    console.log(minutes, metricSeconds);
     timers.push(fetchTimer(metricSeconds, false, minutes));
 }
 
