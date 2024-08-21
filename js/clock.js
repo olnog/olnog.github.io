@@ -16,14 +16,13 @@ $( "#minuteTimer" ).on( "click", function() {
 
 $( "#metricTimer" ).on( "click", function() {
     console.log($("#newTimer").val())
-
     createTimer(Number($("#newTimer").val()));
 });
 
 
-function createTimer(metricSeconds){
+function createTimer(kMetricSeconds){
     console.log(metricSeconds);
-    timers.push(fetchTimer(metricSeconds, true, metricSeconds));
+    timers.push(fetchTimer(metricSeconds * 1000, true, metricSeconds));
     displayTimers();
 }
 
@@ -60,12 +59,15 @@ function fetchConventionalYear(qCycle){
    //this is rough because I'm not taking into account leap years;
    
 }
-
+fetchImperialTime(metricSeconds){
+    let imperialSeconds = metricSeconds / TOMETRIC;
+    let minutes = Math.floor(imperialSeconds / 60);
+    imperialSeconds %= imperialSeconds;
+    return {minutes: minutes, seconds:imperialSeconds}
+}
 function fetchTimer(metricSeconds, metric, duration){
-    let iSeconds = metricSeconds / TOMETRIC;
-    let minutes = Math.floor(iSeconds / 60);
-    iSeconds %= iSeconds;
-    return {metricSeconds: metricSeconds, minutes: minutes, seconds: iSeconds, metric: metric, duration: duration}    
+    let imperial = fetchImperialTime(metricSeconds);
+    return {metricSeconds: metricSeconds, minutes: imperial.minutes, seconds: imperial.seconds, metric: metric, duration: duration}    
 }
 
 
@@ -79,6 +81,12 @@ function poop(){
         universalDays = 1;
         universalCycles++;
     }
+    for(let i in timers){
+        let timer = timers[i];
+        Math.floor(timer.metricSeconds --);        
+        timers[i] = fetchTimer(timer.metricSeconds, timer.metric, timer.duration);
+    }
+    displayTimers();
     document.getElementById("universalCycles").innerHTML = universalCycles.toLocaleString();
     document.getElementById("universalDays").innerHTML = universalDays.toLocaleString();
     document.getElementById("universalTime").innerHTML = universalTime.toLocaleString();
