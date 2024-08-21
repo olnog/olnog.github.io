@@ -9,16 +9,18 @@ let universalDays = 0;
 document.getElementById("solarNoon").value = noonTime; 
 findUniversalTime();
 setInterval (poop, 864);
+$( "#minuteTimer" ).on( "click", function() {
+    createMinuteTimer($("#newTimer").value);
+});
 
-function fetchTimer(metricSeconds, metric, duration){
-    let iSeconds = metricSeconds / TOMETRIC;
-    let minutes = Math.floor(iSeconds / 60);
-    iSeconds %= iSeconds;
-    return {metricSeconds: metricSeconds, minutes: minutes, seconds: iSeconds, metric: metric, duration: duration}    
-}
+$( "#metricTimer" ).on( "click", function() {
+    createTimer($("#newTimer").value);
+});
+
 
 function createTimer(metricSeconds){
     timers.push(fetchTimer(metricSeconds, true, metricSeconds));
+    displayTimers();
 }
 
 function createMinuteTimer(minutes){
@@ -26,6 +28,11 @@ function createMinuteTimer(minutes){
     timers.push(fetchTimer(metricSeconds, false, minutes));
 }
 
+function displayTimers(){
+    for (let timer of timers){
+        console.log(timer);
+    }
+}
 
 function fetchConventionalYear(qCycle){
     //this does not factor in how many days are currently in the cycle and does not calculate out what day of the imperial year
@@ -39,6 +46,14 @@ function fetchConventionalYear(qCycle){
    //this is rough because I'm not taking into account leap years;
    
 }
+
+function fetchTimer(metricSeconds, metric, duration){
+    let iSeconds = metricSeconds / TOMETRIC;
+    let minutes = Math.floor(iSeconds / 60);
+    iSeconds %= iSeconds;
+    return {metricSeconds: metricSeconds, minutes: minutes, seconds: iSeconds, metric: metric, duration: duration}    
+}
+
 
 function poop(){
     universalTime++;
