@@ -2,12 +2,29 @@ const TOMETRIC = 1.157;
 let earthTimeStarted = false;
 let noonTime = "08/08/24 12:57:34";
 let earthTime = 0;
+let timers = [];
 let universalCycles = 0;
 let universalTime = 0;
 let universalDays = 0;
 document.getElementById("solarNoon").value = noonTime; 
 findUniversalTime();
 setInterval (poop, 864);
+
+function fetchTimer(metricSeconds, metric, duration){
+    let iSeconds = metricSeconds / TOMETRIC;
+    let minutes = Math.floor(iSeconds / 60);
+    iSeconds %= iSeconds;
+    return {metricSeconds: metricSeconds, minutes: minutes, seconds: iSeconds, metric: metric, duration: duration}    
+}
+
+function createTimer(metricSeconds){
+    timers.push(fetchTimer(metricSeconds, true, metricSeconds));
+}
+
+function createMinuteTimer(minutes){
+    let metricSeconds = minutes * 60 * TOMETRIC;
+    timers.push(fetchTimer(metricSeconds, false, minutes));
+}
 
 
 function fetchConventionalYear(qCycle){
