@@ -35,13 +35,13 @@ function displayTimers(){
     for (let timer of timers){
         let duration = timer.duration + " minutes: ";
         if (timer.metric){
-            duration = /*formatMSeconds(timer.duration)*/ timer.duration + " metric seconds: "
+            duration = /*formatMSeconds(timer.duration)*/ timer.duration.toLocaleString() + " metric seconds: "
         }
         let className = '';
         if (timer.metricSeconds < 0){
             className = 'timedOut';
         }
-        text += "<div class='" + className + "'>" + duration + timer.metricSeconds + " / " + timer.minutes + 'm' + timer.seconds + 's</div>';
+        text += "<div class='" + className + "'>" + duration + timer.metricSeconds.toLocaleString() + " / " + timer.minutes + 'm' + timer.seconds + 's</div>';
     }
     $("#timers").html(text);
 }
