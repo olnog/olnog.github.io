@@ -19,7 +19,8 @@ $( "#metricTimer" ).on( "click", function() {
 
 
 function createTimer(kMetricSeconds){
-    timers.push(fetchTimer(metricSeconds * 1000, true, metricSeconds));
+    let metricSeconds = kMetricSeconds * 1000;
+    timers.push(fetchTimer(metricSeconds, true, metricSeconds));
     displayTimers();
 }
 
