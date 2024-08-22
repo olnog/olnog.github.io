@@ -10,8 +10,8 @@ document.getElementById("solarNoon").value = noonTime;
 findUniversalTime();
 setInterval (poop, 864);
 
-$( ".deleteTimer" ).on( "click", function(this) {
-    console.log(this.target.id.split('-')[1]);
+$( ".deleteTimer" ).on( "click", function(e) {
+    console.log(e.target.id.split('-')[1]);
     //deleteMinuteTimer());
 });
 
