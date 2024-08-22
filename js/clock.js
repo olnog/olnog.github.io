@@ -56,6 +56,7 @@ function createAlarm(kMetricSeconds){
     let metricSeconds = kMetricSeconds * 1000;
     console.log(kMetricSeconds, metricSeconds);
     alarms.push(metricSeconds);
+    console.log(alarms);
 }
 
 function createTimer(kMetricSeconds){
@@ -77,12 +78,14 @@ function deleteTimer(id){
 function displayAlarms(){
     // add code to where if the alarm is for the next date, it adds the necessary time
     let text = "";
+    console.log(alarms);
     for (let alarm of alarms){
+        console.log(alarm);
         let className = "";
         if (alarm > universalTime){
             className = 'timedOut';
         }
-        text += "<div class='" + className + "'>" + alarm.toLocaleString + " - " + alarm - universalTime + "</div>";
+        text += "<div class='" + className + "'>" + alarm.toLocaleString() + " - " + alarm - universalTime + "</div>";
     }
     $("#alarms").html(text);
 }
