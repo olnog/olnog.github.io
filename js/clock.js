@@ -93,7 +93,8 @@ function displayAlarms(){
 
 function displayTimers(){
     let text = "";
-    for (let timer of timers){
+    for (let i in timers){
+        let timer = timers[i];
         let duration = timer.duration + " minutes: ";
         if (timer.metric){
             duration = /*formatMSeconds(timer.duration)*/ timer.duration.toLocaleString() + " metric seconds: "
