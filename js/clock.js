@@ -49,7 +49,7 @@ function convertToMetric(){
     $("#convertResult").html(metricSeconds + "k")
 }
 
-createAlarm(kMetricSeconds){
+function createAlarm(kMetricSeconds){
     //i should create an algorithm to sort the alarms by soonest to latest
     let metricSeconds = kMetricSeconds * 1000;
     alarms.push(metricSeconds);
