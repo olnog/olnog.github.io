@@ -81,11 +81,11 @@ function displayAlarms(){
     for (let alarm of alarms){
         console.log(alarm);
         let className = "";
-        if (alarm > universalTime){
+        if (universalTime > alarm){
             className = 'timedOut';
         }
         text += "<div class='" + className + "'>" 
-            + alarm.toLocaleString() + " - " + (alarm - universalTime).toLocaleString()
+             + (alarm - universalTime).toLocaleString() + " @ " + (alarm / 1000).toFixed(1) + "k"
             + "</div>";
     }
     $("#alarms").html(text);
