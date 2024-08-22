@@ -15,7 +15,8 @@ $( "#createAlarm" ).on( "click", function() {
     createAlarm(Number($("#alarmValue").val()));
 });
 
-$( ".deleteTimer" ).on( "click", function(e) {
+
+$(document).on("click", ".deleteTimer", function(e){
     console.log(e.target.id.split('-')[1]);
     //deleteMinuteTimer());
 });
@@ -53,9 +54,7 @@ function createAlarm(kMetricSeconds){
     
     //i should create an algorithm to sort the alarms by soonest to latest
     let metricSeconds = kMetricSeconds * 1000;
-    console.log(typeof kMetricSeconds, metricSeconds);
     alarms.push(metricSeconds);
-    console.log(alarms);
 }
 
 function createTimer(kMetricSeconds){
@@ -77,9 +76,7 @@ function deleteTimer(id){
 function displayAlarms(){
     // add code to where if the alarm is for the next date, it adds the necessary time
     let text = "";
-    console.log(alarms);
     for (let alarm of alarms){
-        console.log(alarm);
         let className = "";
         if (universalTime > alarm){
             className = 'timedOut';
