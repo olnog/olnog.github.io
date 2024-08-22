@@ -53,7 +53,7 @@ function createAlarm(kMetricSeconds){
     
     //i should create an algorithm to sort the alarms by soonest to latest
     let metricSeconds = kMetricSeconds * 1000;
-    console.log(kMetricSeconds, metricSeconds);
+    console.log(typeof kMetricSeconds, metricSeconds);
     alarms.push(metricSeconds);
     console.log(alarms);
 }
@@ -84,7 +84,9 @@ function displayAlarms(){
         if (alarm > universalTime){
             className = 'timedOut';
         }
-        text += "<div class='" + className + "'>" + alarm.toLocaleString() + " - " + alarm - universalTime + "</div>";
+        text += "<div class='" + className + "'>" 
+            + alarm.toLocaleString() + " - " + (alarm - universalTime).toLocaleString()
+            + "</div>";
     }
     $("#alarms").html(text);
 }
