@@ -1,4 +1,5 @@
 const TOMETRIC = 1.157;
+let alarms = [];
 let earthTimeStarted = false;
 let noonTime = "08/08/24 12:57:34";
 let earthTime = 0;
@@ -9,6 +10,10 @@ let universalDays = 0;
 document.getElementById("solarNoon").value = noonTime; 
 findUniversalTime();
 setInterval (poop, 864);
+
+$( "#createAlarm" ).on( "click", function() {
+    createAlarm($("#alarmValue").val());
+});
 
 $( ".deleteTimer" ).on( "click", function(e) {
     console.log(e.target.id.split('-')[1]);
@@ -33,7 +38,7 @@ $( "#toImperial" ).on( "click", function() {
 
 
 function convertToImperial(){
-    let metricSeconds = $("#convertValue").val();
+    let metricSeconds = Number($("#convertValue").val()) * 1000;
     let imperial = fetchImperialTime(metricSeconds);
     $("#convertResult").html(imperial.minutes + "m" + imperial.seconds + "s");
 }
@@ -42,6 +47,12 @@ function convertToMetric(){
     let minutes = Number($("#convertValue").val());
     let metricSeconds = (minutes * 60 * TOMETRIC / 1000).toFixed(3);
     $("#convertResult").html(metricSeconds + "k")
+}
+
+createAlarm(kMetricSeconds){
+    //i should create an algorithm to sort the alarms by soonest to latest
+    let metricSeconds = kMetricSeconds * 1000;
+    alarms.push(metricSeconds);
 }
 
 function createTimer(kMetricSeconds){
@@ -58,6 +69,19 @@ function createMinuteTimer(minutes){
 
 function deleteTimer(id){
     timers.splice(id, 1);
+}
+
+function displayAlarms(){
+    // add code to where if the alarm is for the next date, it adds the necessary time
+    let text = "";
+    for (let alarm of alarms){
+        let className = "";
+        if (alarm > universalTime){
+            className = 'timedOut';
+        }
+        text += "<div class='" + className + "'>" + alarm.toLocaleString + " - " + alarm - universalTime + "</div>";
+    }
+    $("#alarms").html(text);
 }
 
 function displayTimers(){
@@ -95,7 +119,7 @@ function fetchImperialTime(metricSeconds){
     let imperialSeconds = metricSeconds / TOMETRIC;
     let minutes = Math.floor(imperialSeconds / 60);
     imperialSeconds %= 60;
-    return {minutes: minutes, seconds:imperialSeconds}
+    return {minutes: minutes, seconds:imperialSeconds.toFixed(1)}
 }
 
 function fetchTimer(metricSeconds, metric, duration){
@@ -120,6 +144,7 @@ function poop(){
         timers[i] = fetchTimer(Math.floor(timer.metricSeconds), timer.metric, timer.duration);
     }
     displayTimers();
+    displayAlarms();
     document.getElementById("universalCycles").innerHTML = universalCycles.toLocaleString();
     document.getElementById("universalDays").innerHTML = universalDays.toLocaleString();
     document.getElementById("universalTime").innerHTML = universalTime.toLocaleString();
