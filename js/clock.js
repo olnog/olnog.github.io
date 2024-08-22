@@ -16,9 +16,8 @@ $( "#createAlarm" ).on( "click", function() {
 });
 
 
-$(document).on("click", ".deleteTimer", function(e){
-    console.log(e.target.id.split('-')[1]);
-    //deleteMinuteTimer());
+$(document).on("click", ".deleteTimer", function(e){    
+    deleteTimer(Number(e.target.id.split('-')[1]));
 });
 
 $( "#minuteTimer" ).on( "click", function() {
