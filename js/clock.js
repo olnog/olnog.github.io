@@ -9,6 +9,12 @@ let universalDays = 0;
 document.getElementById("solarNoon").value = noonTime; 
 findUniversalTime();
 setInterval (poop, 864);
+
+$( ".deleteTimer" ).on( "click", function(this) {
+    console.log(this.target.id.split('-')[1]);
+    //deleteMinuteTimer());
+});
+
 $( "#minuteTimer" ).on( "click", function() {
     createMinuteTimer(Number($("#newTimer").val()));
 });
@@ -17,6 +23,26 @@ $( "#metricTimer" ).on( "click", function() {
     createTimer(Number($("#newTimer").val()));
 });
 
+$( "#toMetric" ).on( "click", function() {
+    convertToMetric();
+});
+
+$( "#toImperial" ).on( "click", function() {
+    convertToImperial();
+});
+
+
+function convertToImperial(){
+    let metricSeconds = $("#convertValue").val();
+    let imperial = fetchImperialTime(metricSeconds);
+    $("#convertResult").html(imperial.minutes + "m" + imperial.seconds + "s");
+}
+
+function convertToMetric(){
+    let minutes = Number($("#convertValue").val());
+    let metricSeconds = (minutes * 60 * TOMETRIC / 1000).toFixed(3);
+    $("#convertResult").html(metricSeconds + "k")
+}
 
 function createTimer(kMetricSeconds){
     let metricSeconds = kMetricSeconds * 1000;
@@ -30,6 +56,10 @@ function createMinuteTimer(minutes){
     displayTimers();
 }
 
+function deleteTimer(id){
+    timers.splice(id, 1);
+}
+
 function displayTimers(){
     let text = "";
     for (let timer of timers){
@@ -41,7 +71,9 @@ function displayTimers(){
         if (timer.metricSeconds < 0){
             className = 'timedOut';
         }
-        text += "<div class='" + className + "'>" + duration + timer.metricSeconds.toLocaleString() + " / " + timer.minutes + 'm' + timer.seconds + 's</div>';
+        text += "<div class='" + className + "'>" 
+            + "<button id='deleteTimer-" + i + "' class='deleteTimer'>x</button>"
+            + duration + timer.metricSeconds.toLocaleString() + " / " + timer.minutes + 'm' + timer.seconds + 's</div>';
     }
     $("#timers").html(text);
 }
