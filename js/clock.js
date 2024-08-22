@@ -11,9 +11,8 @@ document.getElementById("solarNoon").value = noonTime;
 findUniversalTime();
 setInterval (poop, 864);
 
-$( "#createAlarm" ).on( "click", function() {
-    console.log($("#alarmValue").val());
-    createAlarm($("#alarmValue").val());
+$( "#createAlarm" ).on( "click", function() {    
+    createAlarm(Number($("#alarmValue").val()));
 });
 
 $( ".deleteTimer" ).on( "click", function(e) {
@@ -130,7 +129,7 @@ function fetchImperialTime(metricSeconds){
 
 function fetchTimer(metricSeconds, metric, duration){
     let imperial = fetchImperialTime(metricSeconds);
-    return {metricSeconds: metricSeconds, minutes: imperial.minutes, seconds: imperial.seconds.toFixed(1), metric: metric, duration: duration}    
+    return {metricSeconds: metricSeconds, minutes: imperial.minutes, seconds: imperial.seconds, metric: metric, duration: duration}    
 }
 
 
