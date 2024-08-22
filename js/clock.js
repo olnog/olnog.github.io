@@ -12,6 +12,7 @@ findUniversalTime();
 setInterval (poop, 864);
 
 $( "#createAlarm" ).on( "click", function() {
+    console.log($("#alarmValue").val());
     createAlarm($("#alarmValue").val());
 });
 
@@ -50,8 +51,10 @@ function convertToMetric(){
 }
 
 function createAlarm(kMetricSeconds){
+    
     //i should create an algorithm to sort the alarms by soonest to latest
     let metricSeconds = kMetricSeconds * 1000;
+    console.log(kMetricSeconds, metricSeconds);
     alarms.push(metricSeconds);
 }
 
