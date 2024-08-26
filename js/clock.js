@@ -1,3 +1,4 @@
+const DAYSTOUNIX = 4371677;
 const TOMETRIC = 1.157;
 let alarms = [];
 let earthTimeStarted = false;
