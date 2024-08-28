@@ -16,6 +16,11 @@ div, h1 {
     text-align:center;
   }
 
+
+  #alarms, #universalTime{
+    font-size: 75px;
+  }
+
   .achieved {
     color: green;
   }

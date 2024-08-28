@@ -46,12 +46,27 @@
         Date:
         <span id="universalDays"></span>
     </div><div class="center">
-        Time: <span id="universalTime"></span>
+        <span id="universalTime"></span>
     </div>
-    <div>
-        <input type="text" id="newTimer" value="5">
-        <button id="minuteTimer">timer(minutes)</button>
-        <button id="metricTimer">timer(metric - k's)</button>
+    <h3 class="center">alarms (universal time)</h3>
+    <div class="center">
+        <input type="text" id="alarmValue">
+        <button id="createAlarm">+k</button>
+    </div><div id='alarms' class="center">
+        
+    </div>
+    <h3 class="center">conversions</h3>
+    <div class="center">
+        <input type="text" id="convertValue">
+        <button id="toMetric"> minutes -> metric seconds</button>
+        <button id="toImperial"> k metric seconds -> minutes</button>
+    </div><div id="convertResult" class="center">
+    </div>
+    <h3 class="center">timers</h3>
+    <div class="center">
+        <input type="text" id="newTimer" value="">
+        <button id="minuteTimer">+minutes</button>
+        <button id="metricTimer">+k metric seconds </button>
     </div><div id="timers">
 
     </div>
