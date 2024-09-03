@@ -37,6 +37,9 @@ $( "#toImperial" ).on( "click", function() {
     convertToImperial();
 });
 
+$( "#whatDateDaysAgo" ).on( "click", function() {
+    whatDate(Number($("#convertValue").val()));
+});
 
 function convertToImperial(){
     let metricSeconds = Number($("#convertValue").val()) * 1000;
@@ -206,5 +209,13 @@ function findUniversalTime(){
     universalDays = Math.floor(days % 1000);
 
     
+
+}
+
+function whatDate(daysAgo){
+    let today = new Date();
+    console.log(today.getDate() - daysAgo);
+    //d.setDate
+    //console.log(d.toString());
 
 }
