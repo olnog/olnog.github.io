@@ -37,7 +37,7 @@
     
     <h3 id='halal-media' class="center">halal media</h3>
     <div>
-         As part of <b>The Divinity of Infrastructure,</b> entertainment media is not exempt from this precept. Entertainment media not created by The Organization is haram, but because The Monastery of the White Tiger is not about complete isolation, we do include some entertainment media. Right now, only entertainment media produced from beyond 10 cycles ago (or before 1994) is considered halal. (Though, that may be extended even further.) There's also other media that's been grandfathered in due to its nature: <em>White Tiger (2021)</em> and <em>Anathem (2008)</em>.
+         As part of <b>The Divinity of Infrastructure,</b> entertainment media is not exempt from this precept. Entertainment media not created by The Organization is haram, but because The Monastery of the White Tiger is not about complete isolation, we do include some entertainment media. Right now, only entertainment media produced from beyond 10 cycles ago (or before <span id='halal-time'></span>) is considered halal. (Though, that may be extended even further.) There's also other media that's been grandfathered in due to its nature: <em>White Tiger (2021)</em> and <em>Anathem (2008)</em>.
     </div><div>
         Notice that previous statements were in regards to <b>entertainment media</b>. Anything non-fictional that is not for entertainment purposes is grandfathered in. News reports from new organizations are considered halal. Editorials and commentaries from after 1993 are considered haram.
     </div><div>
@@ -62,5 +62,7 @@
 
     <script src='https://code.jquery.com/jquery-3.6.1.js'></script>
     <script src='/js/js.js'></script>
-
+    <script>
+        $("#halal-time").html(whatDate(10000))
+    </script>
 </body></html>
