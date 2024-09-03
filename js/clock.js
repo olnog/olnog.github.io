@@ -215,6 +215,6 @@ function findUniversalTime(){
 function whatDate(daysAgo){
     let today = new Date();
     today.setDate(today.getDate() - daysAgo);
-    console.log(today.toString());
+    console.log(today.toDateString());
 
 }
