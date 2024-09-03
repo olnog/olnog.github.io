@@ -38,7 +38,7 @@ $( "#toImperial" ).on( "click", function() {
 });
 
 $( "#whatDateDaysAgo" ).on( "click", function() {
-    whatDate(Number($("#convertValue").val()));
+    $("#convertResult").html(whatDate(Number($("#convertValue").val())));
 });
 
 function convertToImperial(){
@@ -215,6 +215,6 @@ function findUniversalTime(){
 function whatDate(daysAgo){
     let today = new Date();
     today.setDate(today.getDate() - daysAgo);
-    console.log(today.toDateString());
+    return today.toDateString();
 
 }
