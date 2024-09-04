@@ -125,6 +125,13 @@ function fetchConventionalYear(qCycle){
    
 }
 
+
+function fetchHalalMediaDate(){
+    findUniversalTime();
+    let lastCycle = universalCycles - 1
+    return whatDate((lastCycle * 1000) + universalDays)
+}
+
 function fetchImperialTime(metricSeconds){
     let imperialSeconds = metricSeconds / TOMETRIC;
     let minutes = Math.floor(imperialSeconds / 60);
@@ -222,5 +229,4 @@ function whatDate(daysAgo){
     let today = new Date();
     today.setDate(today.getDate() - daysAgo);
     return today.toDateString();
-
 }
