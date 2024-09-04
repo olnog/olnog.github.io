@@ -10,9 +10,7 @@ let timers = [];
 let universalCycles = 0;
 let universalTime = 0;
 let universalDays = 0;
-document.getElementById("solarNoon").value = noonTime; 
-findUniversalTime();
-setInterval (poop, 864);
+
 
 $( "#createAlarm" ).on( "click", function() {    
     createAlarm(Number($("#alarmValue").val()));
@@ -186,6 +184,13 @@ function reset(what){
     }
     document.getElementById("reset").innerHTML = new Date(noonTime).toLocaleString();
 }
+
+function runClock(){
+    document.getElementById("solarNoon").value = noonTime; 
+    findUniversalTime();
+    setInterval (poop, 864);
+}
+
 function solarNoon(){            
     let noon = new Date (document.getElementById("solarNoon").value);
     let now = new Date();
