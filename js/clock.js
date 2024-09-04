@@ -127,7 +127,7 @@ function fetchConventionalYear(qCycle){
 function fetchHalalMediaDate(){
     findUniversalTime();
     let lastCycle = universalCycles - 1
-    return whatDate((lastCycle * 1000) + universalDays)
+    return whatDate((10000 + universalDays)
 }
 
 function fetchImperialTime(metricSeconds){
