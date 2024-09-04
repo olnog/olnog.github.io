@@ -1,4 +1,6 @@
 const DAYSTOUNIX = 4371677;
+const DAYSINCYCLE = 1000;
+const SECONDSINDAY = 100000;
 const TOMETRIC = 1.157;
 let alarms = [];
 let earthTimeStarted = false;
@@ -197,16 +199,20 @@ function typing(e){
 
 }
 function findUniversalTime(){
-    let seconds = Math.floor(Date.now() / 1000);
-    seconds -= 50000; //adjust from midnight to noon
-    seconds *= TOMETRIC;
-    let days = seconds / 100000  + 4371922; //the number of 100k second days since 1970 and how many days in years in the heliocene calendar up to 1970
-    seconds %= 100000;
-    seconds = Math.floor(seconds);
-    days = Math.floor(days);
+    /*
+    seconds = math.floor((time.time() - 50000) * TOMETRIC) #the 50k is to have it start at noon instead of midnight
+    days = DAYSTOUNIX + math.floor(seconds / SECONDSINDAY)
+    seconds = math.floor(seconds % SECONDSINDAY)
+    cycle = math.floor(days / DAYSINCYCLE)
+    date = math.floor(days % DAYSINCYCLE)
+*/
+    let seconds = Math.floor( ((Date.now() / 1000) - 50000) * TOMETRIC);
+
+    let days = DAYSTOUNIX + Math.floor(seconds / SECONDSINDAY); 
+    seconds %= SECONDSINDAY;        
     universalTime = seconds;
-    universalCycles = Math.floor(days / 1000);
-    universalDays = Math.floor(days % 1000);
+    universalCycles = Math.floor(days / DAYSINCYCLE);
+    universalDays = Math.floor(days % DAYSINCYCLE);
 
     
 
