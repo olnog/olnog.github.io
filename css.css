@@ -1,5 +1,9 @@
+a:visited {
+  color: darkgrey;
+  font-style:italic;  
+}
 a {
-  color: grey;
+  color: black;
   font-style:italic;  
 }
 a.menu {
