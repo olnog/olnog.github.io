@@ -50,6 +50,14 @@ div, h1 {
 
   }
 
+  .info{
+    margin-left: 50px;
+  }
+
+  .name{
+    margin-left: 20px;
+  }
+
   .note, .todo {
     color: grey;
     margin-left: 50px;
