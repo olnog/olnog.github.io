@@ -18,6 +18,8 @@
     <div class="">
         <a class='menu'  href="/anathem/">[ back ]</a>    
     </div>
+
+
     <h3>4391-6667 [October 1, 2024]</h3>
     <div>
         <span class="category">computer: </span> I was having difficulty finding a monitor with HDMI in my collection. (I had been running the Raspberry PI Zero off the TV but it's at the wrong height.) I found one yesterday and set it up today. I immediately ran into an issue trying to use it as my main computer. Raspberry Pi Zero doesn't support Chromium which is a pretty big issue. And thne, another issue happened where the wifi just turned off. I brought up a terminal so I could run lynx and then an error came up saying that wpasupplicant was already running and then the wifi turned off.
@@ -26,6 +28,12 @@
     </div></div>
         The main issue with using the RPZ is just using its wifi, so I'll use it for something else. I've thought about using it as a metric clock but that seems like not enough given its capabilities.
     </div></div>
+        I had planned to create an Altair-like computer but maybe a little more advanced so I could create a really basic (basic by contemporary standards) computer to use as my day to day. But, yesterday, I was reading homebrew projects about this and I realized that this would probably take decades to get to just an Altair/Apple level of computing.
+    </div></div>
+        <span class="category">The Discipline: </span> Recently, I was reading Anathem and they were talking about, I think, The Convox that happens in that story. The specifics of what that means isn't so important but they talk about coordinating before Provener (noon), and after Provener. And that made me think of coordinating my efforts from now on in that same kind of vein. I spend a LOT of time watching media and that's problematic because its distracting for any kind of deep work, but what if I limited all video media to after Provener (noon) or maybe eventually dusk? 
+    </div></div>
+        <span class="category">Metric Clock:</span>   I've been working on this concept of Metric Time for quite a while and only today, when I was reading a book called Hands of Time, I learned about Decimal Time which is apparently also an extensive <a href=''>Wikipedia article</a>. I typed in 'metric time' in Google when I began this project and nothing significant came up but now this is a whole different avenue.
+    </div><div>
         <span class="category">:</span>   
     </div>
     <h3>4391-6663 [September 27, 2024]</h3>
@@ -33,8 +41,7 @@
         <span class="category">computer: </span> I've been attempting to get the wifi working on the raspberry pi zero all morning. I'd been googling random things, typing in random commands to mitigate the issue but every single command except for 'ifconfig wlan0 up' returned an error. I basically gave up, figuring I'd have to get a Raspberry Pi Zero W, but I before I turned it off I noticed: the wifi was on! Something I had done had turned the wifi on and I was able to log in to the wifi network. I had no idea what command worked though.
     </div><div>
         So after rebooting and going through each command one by one, I figured out which one was bringing the wifi network up. The next problem was having it automatically run at start up. This created its own problems. rc.local did nothing. I added a special script to rc.init. Nothing. I tried adding the command to /etc/network/interfaces. nothing. Then I thought that maybe the issue was that since it's a USB wifi plug, maybe that network is only being initialized AFTER I log in. So I ran the command that's been working as part of .bashrc Works perfectly now. Now it's just about getting it connected to a proper monitor and waiting for the new hard drive for my file server and I think I'll be all set. 
-    </div><div>
-        <span class="category">:</span>   
+
     </div>
     <h3>4391-6662 [September 26, 2024]</h3>
     <div>
