@@ -14,6 +14,10 @@
 		.hidden{
 			display: none;
 		}
+		#json{
+			height: 100px;
+			width: 100%;
+		}
 		.more {
 			margin-left: 30px;
 		}
@@ -26,7 +30,7 @@
 	<div><input type='text' id='new_thing'><button id='create'>new</button><button id='toggle_more'>toggle</button></div>
 	<div id="things" class="center"></div>
 	<div><textarea id="json"></textarea></div>
-	<div><button id='json_import' class='json'>import</button><button id='json_export' class='json'>export</button></div>
+	<div><button id='json-import' class='json'>import</button><button id='json-export' class='json'>export</button></div>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 	<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
@@ -37,6 +41,10 @@
 		$(document).on('click', '#create', function(e){
 			add_thing($("#new_thing").val());
 			$("#new_thing").val('')
+		})
+
+		$(document).on('click', '.json', function(e){
+			do_json(e.target.id.split('-')[1])
 		})
 
 		$(document).on('click', '.more', function(e){
@@ -76,6 +84,21 @@
 				}, 
 				{}
 				);
+			refresh();
+		}
+
+		function do_json(which){
+			console.log(things);
+			if (which == "import"){
+				things = JSON.parse($("#json").html())
+				console.log(things);
+				refresh();
+
+				return;
+			}
+
+			let txt = JSON.stringify(things);
+			$("#json").html(txt);
 			refresh();
 		}
 
