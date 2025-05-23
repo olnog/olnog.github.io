@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<title> </title>
+	<style>
+		.center{
+			text-align: center;
+		}
+		.hidden{
+			display: none;
+		}
+		.more {
+			margin-left: 30px;
+		}
+		.poop {
+			margin:30px;
+		}
+	</style>
+</head>
+<body>
+	<div><input type='text' id='new_thing'><button id='create'>new</button><button id='toggle_more'>toggle</button></div>
+	<div id="things" class="center"></div>
+	<div><textarea id="json"></textarea></div>
+	<div><button id='json_import' class='json'>import</button><button id='json_export' class='json'>export</button></div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+	<script>
+		$(document).on('click', '', function(e){
+
+		})
+		$(document).on('click', '#create', function(e){
+			add_thing($("#new_thing").val());
+			$("#new_thing").val('')
+		})
+
+		$(document).on('click', '.more', function(e){
+			more_thing(e.target.id.split('-')[1])
+		})
+
+		$(document).on('keyup', '#new_thing', function(e){
+			if (e.key == "Enter"){
+				add_thing($("#" + e.target.id).val());
+				$("#" + e.target.id).val('')
+				
+			}
+		});
+		$(document).on('click', '#toggle_more', function(e){
+			if (visible){
+				$(".more").addClass('hidden');				
+			} else {
+				$(".more").removeClass('hidden');				
+			}
+			visible = !visible;
+
+		})
+
+		$(document).on('click', 'button', function(e){
+			
+		})
+
+		let things = {};
+		let visible = true;
+		function add_thing(name){
+			things[format_name(name)] = 1;
+			//console.log(things);
+			things = Object.keys(things).sort().reduce(
+				(obj, key) => { 
+					obj[key] = things[key]; 
+					return obj;
+				}, 
+				{}
+				);
+			refresh();
+		}
+
+		function format_name(name){
+			return name.split(' ').join('_');
+		}
+
+		function more_thing(id){
+			things[id] ++;
+			refresh();
+		}
+
+		function refresh(){
+			
+			let txt = "";
+			for (let name in things){
+				let number = things[name];				
+				txt += "<div class='poop'>" + name + ", " + number 
+					+ "<button id='more-" + format_name(name) + "' class='more'>+</button></div>" ;
+			}
+			//console.log(txt);
+			$("#things").html(txt);
+		}
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+must have 3-4 types  with no more than 4 components
+
+Pierce – Ignores defense or armor.
+Counter – If hit during the enemy’s turn, you strike back automatically.
+Evade – Increase dodge chance until your next turn.
+Charge – Boost the power of your next action.
+Wild Card – Mimics the most common action in the rest of the slot.
+Reroll – Lets you reroll one or more reels.
+Hide – Temporarily become untargetable.
+
+
+
+Focus – Gain extra mana or energy for special moves.
+Meditate – Slowly regenerate over multiple turns.
+Mirror – Copies the enemy's last action.
+Debuff – Inflicts a negative status on the enemy (e.g., poison, burn, slow).
+Elemental Attack – Fire, Ice, Lightning, etc., possibly with status effects or type advantages.
+Reflect – Bounce back a portion of damage or magic.
+Barrier – Absorb a fixed amount of damage.
+Dispel – Remove enemy buffs or your own debuffs.
+Buff – Boost your own stats (e.g., Strength Up, Speed Up).
+Jackpot – Super rare combo that gives a big bonus or all actions trigger.
+
+
+
+
+
+
+
+
+

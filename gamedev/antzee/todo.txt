@@ -1,0 +1,2 @@
+still getting an issue where ants are going on blocked squares
+bug where if you put food in a corner, ant can't get bakc out again

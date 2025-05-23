@@ -1,0 +1,54 @@
+
+THe main premise of the game is that you're a spaceship and you can build stuff in space or you can build it on your spaceship. The problem is that as you improve your spaceship, it creates more mass and makes it more expensive to propel through space.
+
+
+
+acceleration = force (newtons) / mass (grams)
+
+final speed (m/s) = acceleration * time
+
+thrust formula 
+    with the assumption of 5kw of power
+    exhaust velocity of hyrogen is 40,000 (m/s)
+    mass flow rate = (2 * 5,000 watts) / (40,000^2)
+    force (newtons) = mass flow rate (kg/s) * exhaust velocity (m/s)
+
+standard gravity is 9.80665 m/s2
+    3g = 29.41995
+    6g = 58.8399
+
+
+58.8399 * 5,000,000,0000 = 294.3 million newtons
+
+294.3millions newtons / 40,0000 = 7357.5 (mass flow rate)
+
+7357.5 * 1600000000 = 
+
+5.886×10¹²
+
+
+To traverse an AU should take a minute. Let's assume a minute equals one week of time.
+    That would be 1.64 m/s^2
+    That means I would need to achieve 164k newtons = 1.64 m/s^2 * 1 million kg
+
+How do I deal with the vagaries of acceleration?
+    Okay, let's make it to where a player can choose traversal speed as: slow, normal, fast.
+
+Nuclear reactor 10kg, 10mw
+    10kg of water
+    3kg of nuclear fuel
+
+For one week of thrust for an ion thruster with a 10mw reactor, it would require 10k kg of xenon / 19,000 liter. 
+    ion thruster was 100k kg
+    -we'll have to call a mulligan and just make it easier to get more xenon while also giving more to the player. 100k kg / 200k liter
+
+
+Reactor + fuel + water	25,000
+Ion thruster system	100,000
+Xenon propellant	100,000
+Structure & hull	35,000
+Avionics, RCS, Batteries, Misc	10,000
+
+It can last 72 days of thrust. After one week, it'll have travelled only .002 AU.
+
+Assuming that you coast, it would take one year to travel 1 AU.

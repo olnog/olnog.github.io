@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<title> </title>
+	<style>
+		.a-left:not(.hidden):not(.blocked){
+			border-left: grey dotted 1px;
+		}
+		.a-right:not(.hidden){
+			border-right: grey dotted 1px;
+		}
+		.a-top:not(.hidden){
+			border-top: grey dotted 1px;
+		}
+		.a-bottom:not(.hidden){
+			border-bottom: grey dotted 1px;
+		}
+		.ant_both {
+			background-color: blue;
+			color: white;
+		}
+		.ant_explores {
+			background-color: royalblue;
+
+		}
+		.ant_returns {
+			background-color: navy;
+			color:white;
+		}
+		.ant_trail {
+			background-color: steelblue;
+		}
+		.base {
+			background-color: aqua;
+		}
+
+		.blocked{
+			background-color:black;
+		}
+
+		.bold{
+			font-weight: bold;
+		}
+
+		.cell {
+			width:20px;
+			height: 20px;
+			
+			padding: 0px;
+			text-align: center;
+		}
+
+
+		.food.farmed{
+			background-color: darkseagreen;
+		}
+		.food_low.farmed {
+			background-color: olive;
+		}
+
+		.food{
+			background-color:darkgreen;
+			color: white;
+		}
+		
+		.food_low{
+			background-color: LightGreen;
+		}
+
+		.hidden{
+			background-color: grey;
+		}
+		.hurt{
+			color: red;
+			font-weight: bold;
+		}
+
+		#metabolic_cost {
+			color: red;
+		}
+		#map{
+			padding: 30px;
+		}
+		#min_harvest{
+			width: 50px;
+		}
+		.op_base {
+			background-color: orangered
+		}
+
+		.op_both {
+			background-color: red;
+			color: white;
+		}
+		.op_explores {
+			background-color: crimson;
+			
+
+		}
+		.op_returns {
+			background-color: darkred;
+			color: white;
+		}
+		.op_scent{
+			background-color: lightpink;
+		}
+		.op_trail {
+			background-color: indianred;
+		}
+		.scent{
+			background-color: PaleTurquoise;
+		}
+	</style>
+</head>
+<body>
+	<div><span id='ticks'></span></div>
+	<div><button id='pause'>pause</button></div>
+	<div id="map"></div>
+
+	<div>
+		<div>
+			Food: <span id='food_inventory'></span>
+			(<span id='metabolic_cost'></span>) [<span id='food_minus_metabolism'></span>]
+		</div>
+		<div>upgrades:</div>
+		<div id="upgrade_menu"></div>
+	</div>
+	</div>
+	<div>
+		Ants: 
+		<span id='num_of_ants'></span> 
+		<button id='reproduce'>new ant (-<span id='reproduce_cost'></span>)</button>
+		Harvest minimum: <input type="number" id="min_harvest" value="">
+	</div>
+	<div id="ants"></div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src='https://code.jquery.com/jquery-3.6.0.js'></script>
+	<script src='js/UI.js'></script>
+	<script src='js/Config.js '></script> 
+	<script src='js/Ant.js'></script>
+	<script src='js/AntExploring.js'></script>
+	<script src='js/AntGoing.js'></script>
+	<script src='js/AntFighting.js'></script>
+	<script src='js/AntMoving.js'></script> 
+	<script src='js/AntReturning.js'></script>
+	<script src='js/Loop.js'></script>
+	<script src='js/Map.js'></script> 
+	<script src='js/MapFetch.js'></script> 
+	<script src='js/MapGenerator.js'></script> 
+	<script src='js/Game.js'></script>
+
+	<script src='js/Units.js'></script> 
+
+
+	<!--
+	<script src='js/ '></script> 
+	-->
+
+
+	<script src='js/events.js'></script>
+	<script src='js/js.js'></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+class UI{
+	constructor(){
+
+	}
+	refresh(){
+
+	}
+}
